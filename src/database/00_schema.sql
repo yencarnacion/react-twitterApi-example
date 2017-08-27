@@ -1,0 +1,4 @@
+CREATE TABLE Tweets (
+  TweetId INTEGER PRIMARY KEY,
+  TweetText TEXT
+);
