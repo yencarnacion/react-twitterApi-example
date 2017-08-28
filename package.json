@@ -32,9 +32,10 @@
     "babel-register": "^6.26.0",
     "elasticsearch": "^13.3.1",
     "express": "^4.15.4",
+    "lodash": "^4.17.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-scripts": "^1.0.11",
-    "sqlite3": "^3.1.9"
+    "sqlite3": "^3.1.8"
   }
 }

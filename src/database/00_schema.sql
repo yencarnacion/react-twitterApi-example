@@ -1,4 +1,13 @@
+DROP TABLE IF EXISTS Tweets;
+DROP TABLE IF EXISTS LatestTweetId;
+
 CREATE TABLE Tweets (
   TweetId INTEGER PRIMARY KEY,
   TweetText TEXT
 );
+
+CREATE TABLE LatestTweetId (
+  TweetId INTEGER
+);
+
+INSERT INTO LatestTweetId (TweetId) VALUES (0);
