@@ -1,7 +1,7 @@
-import { test } from "./test";
+import { search } from "./search";
 
-const routes = [
-  test,
+const routes = (searchServer) => [
+  search(searchServer),
 ];
 
 export default routes;

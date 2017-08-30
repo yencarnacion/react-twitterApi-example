@@ -5,9 +5,11 @@ import { getLatestTweets } from "./service/twitterServices";
 import { promiseTimer } from "./utils/timer";
 import { createTweets, updateLatestTweetId } from "./database/createTweets";
 import { getLatestTweetId } from "./database/getTweets";
+import { initSearchServer } from "./elasticsearch";
 
 const app = express();
 const router = express.Router();
+const searchServer = initSearchServer();
 
 const fetchIntervalSeconds = 5;
 getLatestTweetId().then(id => {
@@ -15,10 +17,15 @@ getLatestTweetId().then(id => {
     getLatestTweets,
     fetchIntervalSeconds * 1000,
     id,
-    (id, tweets) => { createTweets(tweets); updateLatestTweetId(id); });
+    (id, tweets) => {
+      createTweets(tweets);
+      updateLatestTweetId(id);
+      searchServer.load(tweets);
+    },
+    (err) => console.log(`Unable to connect to twitter: ${err}`));
 });
 
-registerRoutes(router, routes);
+registerRoutes(router, routes(searchServer));
 
 const port = process.env.KLAB_API_PORT | 8081;
 

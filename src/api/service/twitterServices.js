@@ -25,7 +25,8 @@ export const getLatestTweets = (latestId) => {
         const tweets = parseResponse(result);
         const newId = tweets.length > 0 ? orderBy(tweets, "id", "desc")[0].id : latestId;
         resolve({newValue: newId, result: tweets});
-      });
+      })
+      .catch(err => reject(err));
   });
 }
 

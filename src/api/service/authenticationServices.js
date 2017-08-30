@@ -12,9 +12,11 @@ export const authenticatedGet = (apiKey, apiSecret, url) => {
       grant_type: "client_credentials",
     },
   }
-  return (apiUrl) => new Promise((resolve) => {
+  return (apiUrl) => new Promise((resolve, reject) => {
     request(tokenRequestDetails, (err, res) => {
-      //console.log(err);
+      if (err || res === undefined) {
+        return reject(err);
+      }
       const token = JSON.parse(res.body).access_token;
       const requestDetails = {
         url: apiUrl,
