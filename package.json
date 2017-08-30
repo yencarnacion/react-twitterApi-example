@@ -5,10 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
-    "run-server": "babel-node ./src/api/server.js",
-    "es": "elasticsearch",
-    "createSearch": "babel-node ./src/searchserver/initServer.js",
-    "createDb": "babel-node ./src/database/createDb.js"
+    "run-server": "babel-node ./src/startup.js"
   },
   "repository": {
     "type": "git",

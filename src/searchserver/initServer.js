@@ -9,4 +9,6 @@ const createIndexIfNew = (index) =>
   client.indices.exists({index})
     .then((exists) => !exists && client.indices.create({ index }));
 
-createIndexIfNew("tweets");
+export const createSearchServer = () => {
+  createIndexIfNew("tweets");
+}
