@@ -1,11 +1,14 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
 import App from "./frontend/containers/App";
-import * as elasticsearch from "elasticsearch";
+import reducers from "./frontend/dataFlow/reducers";
 
-const client = new elasticsearch.Client({
-  host: 'localhost:9200',
-  log: 'trace'
-});
+const store = createStore(reducers);
 
-ReactDOM.render(<App />, document.getElementById("content"));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("content"));
