@@ -14,7 +14,7 @@ const get = authenticatedGet(apiKey, apiSecret, apiUrl);
 
 export const getLatestTweets = (latestId) => {
   const url = new URL("https://api.twitter.com/1.1/search/tweets.json");
-  url.searchParams.append("q", "%23apitest");
+  url.searchParams.append("q", "%23meinunterricht");
   url.searchParams.append("count", "100");
   url.searchParams.append("since_id", latestId);
 
